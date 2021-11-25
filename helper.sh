@@ -16,6 +16,11 @@ die() {
 neo-go::start() {
 	"${NEOGO_BIN}" node --privnet --debug --config-path=. >"${NEOGO_LOG}" 2>&1 &
 	echo $! >$pidfile
+	for i in $(seq 1 20); do
+		"${NEOGO_BIN}" query height -r ${rpc_addr} && return
+		[[ $i -eq 5 ]] || sleep 0.1s
+	done
+	die "Failed to start neo-go node in 2 seconds."
 }
 
 neo-go::stop() {
