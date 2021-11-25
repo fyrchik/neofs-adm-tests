@@ -33,13 +33,17 @@ build.neo-go:
 
 build.neofs-adm:
 ifneq ($(NEOFS_ORIGIN),$(NEOFS_REPO))
-	cd neofs-node && git remote add custom $(NEOFS_REPO) && git fetch custom --tags
+	cd neofs-node && \
+		(git remote get-url custom || git remote add custom $(NEOFS_REPO) ) && \
+		git fetch custom --tags
 endif
 	cd neofs-node && git checkout $(NEOFS_BRANCH) && $(MAKE) -B bin/neofs-adm
 
 build.contracts:
 ifneq ($(CONTRACT_ORIGIN),$(CONTRACT_REPO))
-	cd neofs-contract && git remote add custom $(CONTRACT_REPO) && git fetch custom --tags
+	cd neofs-contract && \
+		(git remote get-url custom || git remote add custom $(CONTRACT_REPO) ) && \
+		git fetch custom --tags
 endif
 	cd neofs-contract && git checkout $(CONTRACT_BRANCH) && NEOGO=../$(NEOGO_BIN) $(MAKE) -B all
 
