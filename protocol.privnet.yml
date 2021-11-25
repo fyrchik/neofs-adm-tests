@@ -1,0 +1,38 @@
+ProtocolConfiguration:
+  Magic: 56753
+  MaxTraceableBlocks: 200000
+  SecondsPerBlock: 1
+  MemPoolSize: 50000
+  StandbyCommittee:
+    - 020256f0b75d35549f1546b74cd5f88a8a9d3fc55a90ca56a86724c9695c9b543a
+  ValidatorsCount: 1
+  SeedList:
+    - 127.0.0.1:20332
+  VerifyBlocks: true
+  VerifyTransactions: true
+  P2PSigExtensions: true
+
+ApplicationConfiguration:
+  DBConfiguration:
+    Type: "leveldb" #other options: 'inmemory','boltdb'
+    LevelDBOptions:
+      DataDirectoryPath: "./chains/privnet"
+  NodePort: 20332
+  Relay: true
+  DialTimeout: 3
+  MinPeers: 0
+  P2PNotary:
+    Enabled: true
+    UnlockWallet:
+      Path: ./wallets/az.json
+      Password: password
+  RPC:
+    Enabled: true
+    MaxGasInvoke: 100
+    Port: 20331
+  Pprof:
+    Enabled: true
+    Port: 2113
+  UnlockWallet:
+    Path: ./wallets/az.json
+    Password: password
