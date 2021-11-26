@@ -16,6 +16,7 @@ wallet::generate || die "Can't generate wallet."
 # We don't restart neo-go so newest version should run.
 [[ -z $5 || $5 == master ]] || make build.neo-go NEOGO_BRANCH="${6:master}"
 neo-go::start || die "Can't start neo-go node."
+trap -- neo-go::stop EXIT
 
 contract::deploy || die "Error during contract deploy."
 

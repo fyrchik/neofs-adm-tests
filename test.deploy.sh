@@ -12,7 +12,10 @@ make clean
 make build NEOFS_CONTRACT_BRANCH="$0" NEOFS_BRANCH="$1" || die "Can't build contracts or neofs-adm."
 
 wallet::generate || die "Can't generate wallet."
+
 neo-go::start || die "Can't start neo-go node."
+trap -- neo-go::stop EXIT
+
 contract::deploy || die "Error during contract deploy."
 
 # Check that hashes from NNS are correctly set.
