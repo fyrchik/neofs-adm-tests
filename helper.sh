@@ -3,7 +3,6 @@
 NEOGO_BIN=./neo-go/bin/neo-go
 NEOGO_LOG=${NEOGO_LOG:-./neo-go.log}
 NEOFSADM_BIN=./neofs-node/bin/neofs-adm
-NEOFSADM_LOG=${NEOFSADM_LOG:-./neofs-adm.log}
 
 pidfile=neo-go.pid
 rpc_addr=http://127.0.0.1:20331
