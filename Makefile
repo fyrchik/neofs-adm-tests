@@ -34,6 +34,7 @@ build.neo-go:
 build.neofs-adm:
 ifneq ($(NEOFS_ORIGIN),$(NEOFS_REPO))
 	cd neofs-node && \
+		git config checkout.defaultRemote origin && \
 		(git remote get-url custom || git remote add custom $(NEOFS_REPO) ) && \
 		git fetch custom --tags
 endif
@@ -42,6 +43,7 @@ endif
 build.contracts:
 ifneq ($(CONTRACT_ORIGIN),$(CONTRACT_REPO))
 	cd neofs-contract && \
+		git config checkout.defaultRemote origin && \
 		(git remote get-url custom || git remote add custom $(CONTRACT_REPO) ) && \
 		git fetch custom --tags
 endif
