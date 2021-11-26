@@ -32,7 +32,7 @@ wallet::generate() {
 	mkdir -p wallets
 	"${NEOFSADM_BIN}" morph generate-alphabet -c neofs-adm.yml --size 1
 	pub="$(neo-go/bin/neo-go wallet dump-keys -w wallets/az.json | sed -n 2p)"
-	sed -i "/StandbyCommittee/ {n;s|- .*|- $pub|;}" protocol.privnet.yml
+	sed "/StandbyCommittee/ {n;s|- .*|- $pub|;}" protocol.privnet.yml.tmpl >protocol.privnet.yml
 }
 
 contract::deploy() {
