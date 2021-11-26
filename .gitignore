@@ -2,3 +2,7 @@
 /*.log
 /wallets/
 protocol.privnet.yml
+/neo-go
+/neofs-node
+/neofs-contract
+/neo-go.pid
