@@ -22,6 +22,9 @@ contract::deploy || die "Error during contract deploy."
 
 make build NEOFS_BRANCH="$3" CONTRACT_BRANCH="$4" || die "Can't build contracts or neofs-adm."
 
+# FIXME old version doesn't create wallet for manifest groups.
+# Remove this after release.
+cp contract.json wallets/contract.json
 contract::update || die "Error during contract update."
 
 contract::check_hashes
