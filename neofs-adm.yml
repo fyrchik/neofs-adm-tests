@@ -1,3 +1,4 @@
 alphabet-wallets: ./wallets
 credentials:
+  contract: group
   az: password
