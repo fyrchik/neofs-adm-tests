@@ -35,6 +35,10 @@ wallet::generate() {
 	sed "/StandbyCommittee/ {n;s|- .*|- $pub|;}" protocol.privnet.yml.tmpl >protocol.privnet.yml
 }
 
+adm::force-new-epoch() {
+	"${NEOFSADM_BIN}" morph force-new-epoch -c neofs-adm.yml -r ${rpc_addr}
+}
+
 contract::deploy() {
 	"${NEOFSADM_BIN}" morph init -c neofs-adm.yml \
 		-r ${rpc_addr} --contracts ./neofs-contract
