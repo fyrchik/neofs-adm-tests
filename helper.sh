@@ -70,3 +70,7 @@ contract::check_hashes() {
 		echo "ok - fetch version for '$name' at $hash"
 	done < <(contract::hashes)
 }
+
+if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
+	"${@:1}"
+fi
