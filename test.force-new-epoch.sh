@@ -9,7 +9,7 @@ export NEOGO_LOG=./neo-go.deploy.log
 neo-go::stop || die "Can't stop neo-go node."
 
 make clean
-make build NEOFS_CONTRACT_BRANCH="$0" NEOFS_BRANCH="$1" || die "Can't build contracts or neofs-adm."
+make build NEOFS_BRANCH="${1@Q}" CONTRACT_BRANCH="${2@Q}" || die "Can't build contracts or neofs-adm."
 
 wallet::generate || die "Can't generate wallet."
 

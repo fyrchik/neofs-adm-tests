@@ -9,7 +9,7 @@ export NEOGO_LOG=./neo-go.update.log
 neo-go::stop || die "Can't stop neo-go node."
 
 make clean
-make build NEOGO_BRANCH="${5:master}" NEOFS_BRANCH="$1" CONTRACT_BRANCH="$2" || die "Can't build contracts or neofs-adm."
+make build NEOGO_BRANCH="${5:master}" NEOFS_BRANCH="${1@Q}" CONTRACT_BRANCH="${2@Q}" || die "Can't build contracts or neofs-adm."
 
 wallet::generate || die "Can't generate wallet."
 
@@ -20,7 +20,7 @@ trap -- neo-go::stop EXIT
 
 contract::deploy || die "Error during contract deploy."
 
-make build NEOFS_BRANCH="$3" CONTRACT_BRANCH="$4" || die "Can't build contracts or neofs-adm."
+make build NEOFS_BRANCH="${3@Q}" CONTRACT_BRANCH="${4@Q}" || die "Can't build contracts or neofs-adm."
 
 # FIXME old version doesn't create wallet for manifest groups.
 # Remove this after release.
